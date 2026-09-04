@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Sanal ortamlar
+.venv/
+.venv-train/
+venv/
+env/
+
+# PyInstaller çıktıları
+# dist* ve build* : betik, klasör kilitliyse dist_12345 gibi yedek adlar da
+# kullanabiliyor; 100 MB üstü exe'nin depoya girmesi kesinlikle engellenmeli.
+build*/
+dist*/
+*.spec
+
+# Uygulamanın ürettiği çalışma dosyaları
+_train/
+_train_dataset/
+*_dataset/
+models/*.onnx
+models/*.json
+labels/.backup/
+labels/.review.json
+runs/
+
+# Veri (etiketlenen resimler depoya girmesin)
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.webp
+*.tif
+*.tiff
+!docs/**/*.png
+
+# Model ağırlıkları
+*.pt
+*.onnx
+
+# Sohbetten indirilen dosyaların düştüğü klasör (depoya girmemeli)
+Claude outputs/
+
+# İşletim sistemi / editör
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

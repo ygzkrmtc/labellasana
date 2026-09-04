@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------------------
+# Sürümler ÜST SINIRLI verilmiştir. Sebep: bir üst ana sürüm (örn. numpy 3,
+# PyQt 6) ikili uyumluluğu bozabilir ve "kurulum başarılı ama program açılmıyor"
+# durumuna yol açar. Test edilen aralıklar aşağıdadır.
+#
+# Kurulumdan sonra:  python check_env.py   ile ortamınızı denetleyin.
+# ---------------------------------------------------------------------------
+
+# --- Zorunlu ---
+PyQt5>=5.15.9,<5.16
+
+# --- Görüntü işleme (iyileştirme, kenar katmanı, manyetik kutu) ---
+# Yoksa bu özellikler menüde açıklama verir, program çalışmayı sürdürür.
+numpy>=1.24,<3
+
+# ÖNEMLİ: 'opencv-python' DEĞİL, 'opencv-python-headless' kurun.
+# Tam sürüm kendi Qt eklentilerini taşır ve PyQt5 ile çakışıp arayüzü bozabilir.
+opencv-python-headless>=4.8,<6
+
+# --- Model destekli ön-etiketleme (isteğe bağlı) ---
+# ultralytics/torch KURULMAZ: model .onnx olarak yüklenir, eğitim ayrı ortamda.
+onnxruntime>=1.16,<2
+
+# --- Sadece .exe üretmek için (isteğe bağlı) ---
+# pyinstaller>=6.6
