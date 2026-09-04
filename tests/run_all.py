@@ -11,6 +11,15 @@ import os
 import sys
 import unittest
 
+# Windows konsolu/CI boru hattı varsayılan olarak cp1252 kullanır ve Türkçe
+# 'ş', 'ı', 'ğ' harfleri o kod sayfasında yoktur: yazdırma anında
+# UnicodeEncodeError alınır, testler geçse bile çıkış kodu 1 olur.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):        # Python < 3.7 veya yönlendirilmiş akış
+        pass
+
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)

@@ -17,6 +17,14 @@ import platform
 import subprocess
 import sys
 
+# Windows'ta varsayılan çıktı kodlaması cp1252'dir ve 'ş', 'ı', 'ğ' harflerini
+# kodlayamaz; UTF-8'e çeviriyoruz ki denetçi kendi mesajları yüzünden çökmesin.
+for _stream in (sys.stdout, sys.stderr):
+    try:
+        _stream.reconfigure(encoding="utf-8", errors="replace")
+    except (AttributeError, ValueError):
+        pass
+
 MIN_PYTHON = (3, 8)
 RECOMMENDED_PYTHON = "3.10 - 3.12"
 
